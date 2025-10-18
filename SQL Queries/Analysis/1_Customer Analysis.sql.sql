@@ -12,4 +12,7 @@ select gender, avg(transaction_amount) as avg_amt from bank_transactions group b
 
 --4. How many customers made transactions in the last month vs. the previous month?
 
----need to write code here!!!!
+select count(distinct case when transaction_date >= date('2025-09-01') and transaction_date < date('2025-10-01') then customer_id end) 
+as previous_month , count(distinct case when transaction_date >= date('2025-10-01') and transaction_date < date('2025-11-01') then customer_id end) 
+as current_month from bank_transactions;
+/* date format is in :- year/month/date */
