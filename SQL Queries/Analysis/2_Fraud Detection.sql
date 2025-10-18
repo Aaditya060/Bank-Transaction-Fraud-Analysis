@@ -24,7 +24,6 @@ when transaction_amount between 2000 and 5000 then '2000-5000'
 when transaction_amount between 5000 and 10000 then '5000-10000'
 when transaction_amount between 10000 and 50000 then '10000-50000'
 when transaction_amount between 50000 and 100000 then '50000-100000'
-else '100000+' end as "Amount Range",
-count(*) as "Total Transactions" ,  sum(is_fraud) as "Fraud Transaction",
+else '100000+' end as "Amount Range",count(*) as "Total Transactions" ,  sum(is_fraud) as "Fraud Transaction",
 round(sum(is_fraud)*100/count(*),2) as "Fraud Percentage" from bank_transactions
 group by "Amount Range" order by "Fraud Percentage" desc;
